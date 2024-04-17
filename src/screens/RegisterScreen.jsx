@@ -46,6 +46,7 @@ export default function RegisterScreen({ navigation }) {
       value = {repetirSenha}
       />
 
+<Text>Faça seu </Text>
 
 <TextInput 
       placeholder="Digite seu logradouro" 
