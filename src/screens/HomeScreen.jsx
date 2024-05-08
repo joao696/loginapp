@@ -1,9 +1,9 @@
-import { View } from "react-native";
+import { View, Surface } from "react-native";
 import { Button, Text } from "react-native-paper";
 
 export default function HomeScreen({ navigation }) {
   return (
-    <View>
+    <Surface>
       <Text>Bem vinda(o) ao nosso app</Text>
       <Button
         onPress={() => {
@@ -13,6 +13,6 @@ export default function HomeScreen({ navigation }) {
       >
         Login
       </Button>
-    </View>
+    </Surface>
   );
 }

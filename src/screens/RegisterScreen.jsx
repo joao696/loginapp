@@ -1,4 +1,4 @@
-import { View, Image} from "react-native";
+import { View, Image, Surface} from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { useState } from "react";
 import { styles } from "../config/styles";
@@ -47,7 +47,7 @@ export default function RegisterScreen({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <Surface style={styles.container}>
       <View style={styles.innerContainer}>
       
         <Text variant="headlineSmall">Faça seu Registro</Text>
@@ -132,6 +132,6 @@ export default function RegisterScreen({ navigation }) {
           Voltar ao login
         </Button>
       </View>
-    </View>
+    </Surface>
   );
 }
