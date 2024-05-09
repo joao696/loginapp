@@ -1,9 +1,9 @@
-import { View, Surface } from "react-native";
-import { Button, Text } from "react-native-paper";
+import { Button, Surface, Text } from "react-native-paper";
+import { styles } from "../config/styles";
 
 export default function HomeScreen({ navigation }) {
   return (
-    <Surface>
+    <Surface style={styles.container}>
       <Text>Bem vinda(o) ao nosso app</Text>
       <Button
         onPress={() => {
