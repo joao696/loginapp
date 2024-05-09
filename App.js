@@ -1,31 +1,36 @@
-import { MD3LightTheme, Provider } from "react-native-paper";
-import AppNavigator from "./src/navigation/AppNavigator";
-
-// note que criamos o arquivo src/config/theme.js
+import React, { useEffect, useState } from "react";
+import { Provider as PaperProvider } from "react-native-paper";
 import { themeDark, themeLight } from "./src/config/theme";
 import { useColorScheme } from "react-native";
+// lembre-se de npm install @react-native-async-storage/async-storage
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import AppNavigator from "./src/navigation/AppNavigator";
 
-export default function App() {
-  // pega o tema do dispositivo
-  const colorScheme = useColorScheme();
-  // criação de tema
-  // https://callstack.github.io/react-native-paper/docs/guides/theming/#creating-dynamic-theme-colors
-  const isDarkMode = colorScheme === "dark";
-  
-  // let theme;
-  // if (isDarkMode) {
-  //   theme = themeDark;
-  // } else {
-  //   theme = themeLight;
-  // }
-  
-  // operador ternário
-  const theme = isDarkMode ? themeDark : themeLight;
+const App = () => {
+  const systemTheme = useColorScheme();
+  const [theme, setTheme] = useState(
+    systemTheme === "dark" ? themeDark : themeLight
+  );
+
+  useEffect(() => {
+    const loadTheme = async () => {
+      const savedTheme = await AsyncStorage.getItem("theme");
+      if (savedTheme) {
+        setTheme(savedTheme === "dark" ? themeDark : themeLight);
+      } else {
+        setTheme(systemTheme === "dark" ? themeDark : themeLight);
+      }
+    };
+    console.log("a");
+
+    loadTheme();
+  }, [systemTheme]);
 
   return (
-    <Provider theme={theme}>
-      {/* aqui usamos o provider do RNP */}
+    <PaperProvider theme={theme}>
       <AppNavigator />
-    </Provider>
+    </PaperProvider>
   );
-}
+};
+
+export default App;
