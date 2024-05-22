@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import RegisterScreen from "../screens/RegisterScreen";
-import SettingsScreen from "../screens/SettingsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,20 +10,6 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen
-          name="RegisterScreen"
-          component={RegisterScreen}
-          options={{
-            title: "Inicial",
-          }}
-        />
-        <Stack.Screen
-          name="SettingsScreen"
-          component={SettingsScreen}
-          options={{
-            title: "Login",
-          }}
-        />
         <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
@@ -32,7 +17,14 @@ export default function AppNavigator() {
             title: "Login",
           }}
         />
-       
+        
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
+          options={{
+            title: "Inicial",
+          }}
+        />
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
@@ -42,5 +34,16 @@ export default function AppNavigator() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+  );
+}
+
+
+const Tabs = createMaterialBottomTabNavigator();
+
+export function TabsNavigation() {
+  return (
+    <Tabs.Navigator>
+      <Tabs.Screen name="Home" component={HomeScreen} />
+    </Tabs.Navigator>
   );
 }
